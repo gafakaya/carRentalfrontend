@@ -9,8 +9,8 @@ import { CarService } from 'src/app/services/car.service';
   styleUrls: ['./car.component.css'],
 })
 export class CarComponent implements OnInit {
-  carDetails: CarDetail[] = [];
   cars: Car[] = [];
+  carDetails: CarDetail[] = [];
   dataLoaded = false;
   constructor(private carService: CarService) {}
 

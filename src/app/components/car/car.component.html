@@ -4,10 +4,11 @@
 <table *ngIf="dataLoaded == true" class="table table-dark table-striped">
   <thead>
     <tr>
-      <th>Product Name</th>
-      <th>Category Id</th>
-      <th>Price</th>
-      <th>Stock</th>
+      <th>Car Name</th>
+      <th>Brand Name</th>
+      <th>Color</th>
+      <th>Daily Price</th>
+      <th>Model Year</th>
     </tr>
   </thead>
   <tbody>
@@ -16,6 +17,7 @@
       <td>{{ car.brandName }}</td>
       <td>{{ car.colorName }}</td>
       <td>{{ car.dailyPrice }}</td>
+      <td>{{ car.modelYear }}</td>
     </tr>
   </tbody>
 </table>
