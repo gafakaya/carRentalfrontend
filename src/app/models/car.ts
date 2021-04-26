@@ -1,5 +1,6 @@
+import { CarDetail } from './carDetail';
 
-export interface Car {
+export interface Car extends CarDetail {
   carId: number;
   brandId: number;
   colorId: number;
