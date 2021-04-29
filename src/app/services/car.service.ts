@@ -1,32 +1,34 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import { CarResponseModel } from '../models/carResponseModel';
 import { Observable } from 'rxjs';
-import { CarDetailResponseModel } from '../models/carDetailResponseModel';
-import { Brand } from '../models/brand';
+import { Car } from '../models/car';
+import { ListResponseModel } from '../models/listResponseModel';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CarService {
-  apiUrl = 'https://localhost:44376/api/cars/';
+  apiUrl = 'https://localhost:44376/api/';
   newPath = '';
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) {}
 
-  getCars(): Observable<CarResponseModel> {
-    this.newPath = `${this.apiUrl}getall`;
-    return this.httpClient.get<CarResponseModel>(this.newPath);
+  getCarDetail(): Observable<ListResponseModel<Car>> {
+    this.newPath = `${this.apiUrl}cars/getcardetail`;
+    return this.httpClient.get<ListResponseModel<Car>>(this.newPath);
   }
 
-  getCarDetail(): Observable<CarDetailResponseModel> {
-    this.newPath = `${this.apiUrl}getcardetail`;
-    return this.httpClient.get<CarDetailResponseModel>(this.newPath);
+  getCarDetailById(carId: number): Observable<ListResponseModel<Car>> {
+    this.newPath = `${this.apiUrl}cars/getcardetailbyid?carId=${carId}`;
+    return this.httpClient.get<ListResponseModel<Car>>(this.newPath);
   }
 
-  getCarByBrandId(brandId: number): Observable<CarDetailResponseModel> {
-    this.newPath = `${this.apiUrl}getcardetailbybrandid?brandId=${brandId}`;
-    return this.httpClient.get<CarDetailResponseModel>(this.newPath);
+  getByBrandId(brandId: number): Observable<ListResponseModel<Car>> {
+    this.newPath = `${this.apiUrl}cars/getbybrandid?brandId=${brandId}`;
+    return this.httpClient.get<ListResponseModel<Car>>(this.newPath);
   }
 
-
+  getByColorId(colorId: number): Observable<ListResponseModel<Car>> {
+    this.newPath = `${this.apiUrl}cars/getbycolorid?colorId=${colorId}`;
+    return this.httpClient.get<ListResponseModel<Car>>(this.newPath);
+  }
 }

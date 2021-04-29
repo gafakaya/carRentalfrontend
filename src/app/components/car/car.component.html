@@ -1,21 +1,18 @@
-<div *ngIf="dataLoaded == false" class="spinner-border text-dark" role="status">
-  <span class="visually-hidden">Loading...</span>
-</div>
-<div *ngIf="dataLoaded == true">
-  <div class="grid">
-    <div class="card col-3" *ngFor="let car of carDetails">
-      <div class="card-img-right"></div>
-      <div class="card-body">
-        <h5 class="card-title">{{ car.carName }}</h5>
-      </div>
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">{{ car.brandName }}</li>
-        <li class="list-group-item">{{ car.colorName }}</li>
-        <li class="list-group-item">{{ car.modelYear }}</li>
-      </ul>
-      <div class="card-footer">
-        <a href="#" class="btn btn-primary">Sepete Ekle</a>
-      </div>
-    </div>
-  </div>
-</div>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Car Name</th>
+        <th scope="col">Brand Name</th>
+        <th scope="col">Color Name</th>
+        <th scope="col">Daily Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let car of cars">
+        <td>{{car.carName}}</td>
+        <td>{{car.brandName}}</td>
+        <td>{{car.colorName}}</td>
+        <td>{{car.dailyPrice}}</td>
+      </tr>
+    </tbody>
+  </table>

@@ -19,7 +19,7 @@ import { HttpClientModule } from '@angular/common/http';
     CustomerComponent,
     CarComponent,
     RentalComponent,
-    NaviComponent
+    NaviComponent,
   ],
   imports: [
     BrowserModule,

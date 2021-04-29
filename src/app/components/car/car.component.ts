@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Brand } from 'src/app/models/brand';
 import { Car } from 'src/app/models/car';
-import { CarDetail } from 'src/app/models/carDetail';
 import { CarService } from 'src/app/services/car.service';
 
 @Component({
@@ -11,39 +9,45 @@ import { CarService } from 'src/app/services/car.service';
   styleUrls: ['./car.component.css'],
 })
 export class CarComponent implements OnInit {
-  cars: Car[] = [];
-  carDetails: CarDetail[] = [];
-  dataLoaded = false;
+  cars: Car[];
+  dataLoaded: boolean = false;
   constructor(
     private carService: CarService,
-    private activatedRoute: ActivatedRoute
+    private activedRoute: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
-    this.activatedRoute.params.subscribe((params) => {
+    this.activedRoute.params.subscribe((params) => {
       if (params['brandId']) {
-        this.getCarByBrandId(params['brandId']);
+        this.getByBrandId(params['brandId']);
       } else {
         this.getCarDetail();
       }
     });
+    this.getCarDetail();
   }
-  getCars(): void {
-    this.carService.getCars().subscribe((response) => {
+
+  getCarDetail(): void {
+    this.carService.getCarDetail().subscribe((response) => {
       this.cars = response.data;
       this.dataLoaded = true;
     });
   }
-  getCarDetail(): void {
-    this.carService.getCarDetail().subscribe((response) => {
-      this.carDetails = response.data;
-      this.dataLoaded = true;
+
+  getCarDetailById(carId: number) {
+    //todo muhtamelen başkabir component'te yapman gerekicek.
+    this.carService.getCarDetailById(carId).subscribe((response) => {});
+  }
+
+  getByBrandId(brandId: number) {
+    this.carService.getByBrandId(brandId).subscribe((response) => {
+      this.cars = response.data;
     });
   }
-  getCarByBrandId(brandId: number): void {
-    this.carService.getCarByBrandId(brandId).subscribe((response) => {
-      this.carDetails = response.data;
-      this.dataLoaded = true;
+
+  getByColorId(colorId: number) {
+    this.carService.getByColorId(colorId).subscribe((response) => {
+      this.cars = response.data;
     });
   }
 }
