@@ -1,18 +1,24 @@
-<table class="table">
-    <thead>
-      <tr>
-        <th scope="col">Car Name</th>
-        <th scope="col">Brand Name</th>
-        <th scope="col">Color Name</th>
-        <th scope="col">Daily Price</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let car of cars">
-        <td>{{car.carName}}</td>
-        <td>{{car.brandName}}</td>
-        <td>{{car.colorName}}</td>
-        <td>{{car.dailyPrice}}</td>
-      </tr>
-    </tbody>
-  </table>
+<div class="row">
+  <div *ngFor="let car of cars" class="card col-md-5 col-lg-3 m-3">
+    <img *ngIf="!car.carImage.length" class="card-img-top" alt="Image" width="200" height="200" [src]="imgUrl + defaultImage">
+    <img *ngIf="car.carImage.length" class="card-img-top" alt="Image" width="200" height="200" [src]="imgUrl + car.carImage[0].imagePath">
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">
+        Some quick example text to build on the card title and make up the bulk
+        of the card's content.
+      </p>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">Brand: {{ car.brandName }}</li>
+      <li class="list-group-item">Car Model: {{ car.carName }}</li>
+      <li class="list-group-item">Model Year: {{ car.modelYear }}</li>
+    </ul>
+    <div class="card-body">
+      <div class="btn-group" role="group" aria-label="Basic outlined example">
+        <button type="button" class="btn btn-outline-primary btn-sm">Add to cart</button>
+        <button routerLink='/cars/cardetail/{{car.carId}}' type="button" class="btn btn-outline-primary btn-sm">Go detail</button>
+      </div>
+    </div>
+  </div>
+</div>

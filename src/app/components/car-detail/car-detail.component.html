@@ -1,0 +1,43 @@
+
+<div class="card m-3" *ngFor="let car of cars">
+    <div class="card-top-image">
+        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+          </div>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="..." class="d-block w-25" height="300" alt="image">
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+    </div>
+    <div class="card">
+      <div class="card-header fs-4">
+        {{car.brandName}} {{car.carName}}
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Car detail:</h5>
+        <p class="card-text pt-2">A car that will satisfy you if you are fond of American cars.</p>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Brand: {{ car.brandName }}</li>
+          <li class="list-group-item">Car Model: {{ car.carName }}</li>
+          <li class="list-group-item">Model Year: {{ car.modelYear }}</li>
+          <li class="list-group-item">Daily Price: {{car.dailyPrice}}$</li>
+          <li class="list-group-item">
+            <a href="#" class="btn btn-primary mt-3">Add to cart</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+</div>

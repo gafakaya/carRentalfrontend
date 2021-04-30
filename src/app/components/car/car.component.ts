@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Car } from 'src/app/models/car';
+import { CarImage } from 'src/app/models/carImage';
 import { CarService } from 'src/app/services/car.service';
 
 @Component({
@@ -10,6 +11,9 @@ import { CarService } from 'src/app/services/car.service';
 })
 export class CarComponent implements OnInit {
   cars: Car[];
+  carImages: any;
+  imgUrl = 'https://localhost:44376';
+  defaultImage = '/default.jpg';
   dataLoaded: boolean = false;
   constructor(
     private carService: CarService,
@@ -35,7 +39,6 @@ export class CarComponent implements OnInit {
   }
 
   getCarDetailById(carId: number) {
-    //todo muhtamelen başkabir component'te yapman gerekicek.
     this.carService.getCarDetailById(carId).subscribe((response) => {});
   }
 
