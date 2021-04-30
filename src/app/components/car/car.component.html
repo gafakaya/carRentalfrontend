@@ -1,7 +1,7 @@
 <div class="row">
   <div *ngFor="let car of cars" class="card col-md-5 col-lg-3 m-3">
-    <img *ngIf="!car.carImage.length" class="card-img-top" alt="Image" width="200" height="200" [src]="imgUrl + defaultImage">
-    <img *ngIf="car.carImage.length" class="card-img-top" alt="Image" width="200" height="200" [src]="imgUrl + car.carImage[0].imagePath">
+    <img *ngIf="car.carImage.length === 0" class="card-img-top" alt="Image" width="200" height="200" [src]="imgUrl + defaultImage">
+    <img *ngIf="car.carImage.length !== 0" class="card-img-top" alt="Image" width="200" height="200" [src]="imgUrl + car.carImage[0].imagePath">
     <div class="card-body">
       <h5 class="card-title">Card title</h5>
       <p class="card-text">

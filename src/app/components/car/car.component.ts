@@ -13,7 +13,7 @@ export class CarComponent implements OnInit {
   cars: Car[];
   carImages: any;
   imgUrl = 'https://localhost:44376';
-  defaultImage = '/default.jpg';
+  defaultImage = '/images/default.jpg';
   dataLoaded: boolean = false;
   constructor(
     private carService: CarService,
