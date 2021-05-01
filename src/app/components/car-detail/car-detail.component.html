@@ -1,15 +1,28 @@
 
-<div class="card m-3" *ngFor="let car of cars">
+<div class="card m-3 col-md-6" *ngFor="let car of cars">
     <div class="card-top-image">
         <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
           <div class="carousel-indicators">
             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-          </div>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
+            </div>
           <div class="carousel-inner">
-            <div class="carousel-item active">
-              <img src="..." class="d-block w-25" height="300" alt="image">
+            <div class="carousel-item active" *ngIf="car.carImage.length === 0" >
+              <img [src]="imgUrl + defaultImage" class="d-block w-100" alt="image">
+            </div>
+            <div class="carousel-item active" *ngIf="car.carImage.length >= 1" >
+              <img [src]="imgUrl + car.carImage[1].imagePath" class="d-block w-100" alt="image">
+            </div>
+            <div class="carousel-item" *ngIf="car.carImage.length >= 2" >
+              <img [src]="imgUrl + car.carImage[0].imagePath" class="d-block w-100" alt="image">
+            </div>
+            <div class="carousel-item" *ngIf="car.carImage.length >= 3">
+              <img [src]="imgUrl + car.carImage[2].imagePath" class="d-block w-100" alt="image">
+            </div>
+            <div class="carousel-item" *ngIf="car.carImage.length >= 4">
+              <img [src]="imgUrl + car.carImage[3].imagePath" class="d-block w-100" alt="image">
             </div>
           </div>
           <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">

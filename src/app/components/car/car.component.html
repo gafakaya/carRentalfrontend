@@ -3,7 +3,7 @@
     <img *ngIf="car.carImage.length === 0" class="card-img-top" alt="Image" width="200" height="200" [src]="imgUrl + defaultImage">
     <img *ngIf="car.carImage.length !== 0" class="card-img-top" alt="Image" width="200" height="200" [src]="imgUrl + car.carImage[0].imagePath">
     <div class="card-body">
-      <h5 class="card-title">Card title</h5>
+      <h5 class="card-title">{{ car.brandName }} {{ car.carName }}</h5>
       <p class="card-text">
         Some quick example text to build on the card title and make up the bulk
         of the card's content.

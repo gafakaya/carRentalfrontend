@@ -10,6 +10,8 @@ import { CarService } from 'src/app/services/car.service';
 })
 export class CarDetailComponent implements OnInit {
   cars: Car[];
+  imgUrl = 'https://localhost:44376';
+  defaultImage = '/images/default.jpg';
 
   constructor(
     private carService: CarService,

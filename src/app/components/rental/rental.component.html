@@ -14,7 +14,7 @@
       <tr *ngFor="let rental of rentalDetails">
         <td>{{ rental.brandName }}</td>
         <td>{{ rental.customer }}</td>
-        <td>{{ rental.rantelDate }}</td>
+        <td>{{ rental.rantelDate |date}}</td>
         <td>{{ rental.returnDate }}</td>
       </tr>
     </tbody>
