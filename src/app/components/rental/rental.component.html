@@ -1,21 +1,72 @@
-<div *ngIf="dataLoaded == false" class="spinner-border text-dark" role="status">
-    <span class="visually-hidden">Loading...</span>
+
+<div class="card row m-3 col-md-6" *ngFor="let car of cars">
+  <div class="card">
+    <div class="card-header fs-4">
+      {{car.brandName}} {{car.carName}}
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">Car detail:</h5>
+      <p class="card-text pt-2">A car that will satisfy you if you are fond of American cars.</p>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Brand: {{ car.brandName }}</li>
+        <li class="list-group-item">Car Model: {{ car.carName }}</li>
+        <li class="list-group-item">Model Year: {{ car.modelYear }}</li>
+        <li class="list-group-item">Daily Price: {{car.dailyPrice}}$</li>
+      </ul>
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">Rental detail:</h5>
+      <p class="card-text pt-2">A car that will satisfy you if you are fond of American cars.</p>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-default">Rent Date</span>
+            <input [(ngModel)]="rentDate" type="datetime-local" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+          </div>
+        </li>
+        <li class="list-group-item">
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-default">Return Date</span>
+            <input [(ngModel)]="returnDate"  type="datetime-local" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+          </div>
+        <li class="list-group-item">Daily Price: {{car.dailyPrice}}$</li>
+          <div class="card-body">
+            <div class="card text-center">
+              <div class="card-header">
+                Credit card information
+              </div>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">
+                    <div class="input-group flex-nowrap">
+                      <span class="input-group-text" id="addon-wrapping">Card Number</span>
+                      <input [(ngModel)]="cardNumber" type="text" class="form-control" aria-label="Username" aria-describedby="addon-wrapping">
+                    </div>
+                  </li>
+                  <li class="list-group-item">
+                    <div class="input-group flex-nowrap">
+                    <span class="input-group-text" id="addon-wrapping">AA</span>
+                    <input [(ngModel)]="aa" min="0" max="31" type="number" class="form-control" aria-label="Username" aria-describedby="addon-wrapping">
+                    </div>
+                  </li>
+                  <li class="list-group-item">
+                    <div class="input-group flex-nowrap">
+                      <span class="input-group-text" id="addon-wrapping">YYYY</span>
+                      <input [(ngModel)]="yyyy" min="2021" max="2041" type="number" class="form-control" aria-label="Username" aria-describedby="addon-wrapping">
+                    </div>
+                  </li>
+                  <li class="list-group-item">
+                    <div class="input-group flex-nowrap">
+                      <span class="input-group-text" id="addon-wrapping">Security Code</span>
+                      <input [(ngModel)]="securityCode" type="text" class="form-control" aria-label="Username" aria-describedby="addon-wrapping">
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+        <li class="list-group-item">
+          <a href="#" class="btn btn-primary mt-3" (click)="addRental(car)">Rent It</a>
+        </li>
+      </ul>
+    </div>
   </div>
-  <table *ngIf="dataLoaded == true" class="table table-dark table-striped">
-    <thead>
-      <tr>
-        <th>Brand Name</th>
-        <th>Customer</th>
-        <th>Rental Date</th>
-        <th>Return Date</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let rental of rentalDetails">
-        <td>{{ rental.brandName }}</td>
-        <td>{{ rental.customer }}</td>
-        <td>{{ rental.rantelDate |date}}</td>
-        <td>{{ rental.returnDate }}</td>
-      </tr>
-    </tbody>
-  </table>
+</div>

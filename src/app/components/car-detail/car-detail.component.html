@@ -48,7 +48,9 @@
           <li class="list-group-item">Model Year: {{ car.modelYear }}</li>
           <li class="list-group-item">Daily Price: {{car.dailyPrice}}$</li>
           <li class="list-group-item">
-            <a href="#" class="btn btn-primary mt-3">Add to cart</a>
+            <a href="#" class="btn btn-primary mt-3" routerLink="/car/rental/{{car.carId}}">
+              Rent It
+            </a>
           </li>
         </ul>
       </div>

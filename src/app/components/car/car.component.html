@@ -1,5 +1,14 @@
+<div *ngIf="dataLoaded == false" class="spinner-border text-dark" role="status">
+  <span class="visually-hidden">Loading...</span>
+</div>
+
+<div class="mb-3">
+  <label for="filtertext" class="form-label">Search Product</label>
+  <input [(ngModel)]="filterText" type="email" class="form-control" id="filtertext" placeholder="Car Name">
+</div>
+
 <div class="row">
-  <div *ngFor="let car of cars" class="card col-md-5 col-lg-3 m-3">
+  <div *ngFor="let car of cars | filterPipe:filterText" class="card col-md-5 col-lg-3 m-3">
     <img *ngIf="car.carImage.length === 0" class="card-img-top" alt="Image" width="200" height="200" [src]="imgUrl + defaultImage">
     <img *ngIf="car.carImage.length !== 0" class="card-img-top" alt="Image" width="200" height="200" [src]="imgUrl + car.carImage[0].imagePath">
     <div class="card-body">
@@ -16,7 +25,7 @@
     </ul>
     <div class="card-body">
       <div class="btn-group" role="group" aria-label="Basic outlined example">
-        <button type="button" class="btn btn-outline-primary btn-sm">Add to cart</button>
+        <button type="button" class="btn btn-outline-primary btn-sm" routerLink='/car/rental/{{car.carId}}'>Rent It</button>
         <button routerLink='/cars/cardetail/{{car.carId}}' type="button" class="btn btn-outline-primary btn-sm">Go detail</button>
       </div>
     </div>
